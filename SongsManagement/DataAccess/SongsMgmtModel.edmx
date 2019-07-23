@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SongsMgmtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="User_LoginInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginAttempts" Type="tinyint" />
+          <Property Name="UserTypeId" Type="uniqueidentifier" />
+          <Property Name="CreatedTimestamp" Type="datetime" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User_PersonalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_LoginInfo_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="30" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="30" />
+          <Property Name="PRO" Type="nvarchar" MaxLength="30" />
+          <Property Name="IP" Type="nvarchar" MaxLength="30" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" />
+          <Property Name="State" Type="nvarchar" MaxLength="30" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="User_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="30" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedTimestamp" Type="datetime" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="SongsMgmtModelStoreContainer">
+          <EntitySet Name="User_LoginInfo" EntityType="Self.User_LoginInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_PersonalInfo" EntityType="Self.User_PersonalInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Type" EntityType="Self.User_Type" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SongsMgmtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User_LoginInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginAttempts" Type="Byte" />
+          <Property Name="UserTypeId" Type="Guid" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User_PersonalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PRO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="User_LoginInfo_Id" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SongsManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="User_LoginInfo" EntityType="Self.User_LoginInfo" />
+          <EntitySet Name="User_PersonalInfo" EntityType="Self.User_PersonalInfo" />
+          <EntitySet Name="User_Type" EntityType="Self.User_Type" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SongsMgmtModelStoreContainer" CdmEntityContainer="SongsManagementEntities">
+          <EntitySetMapping Name="User_LoginInfo">
+            <EntityTypeMapping TypeName="SongsMgmtModel.User_LoginInfo">
+              <MappingFragment StoreEntitySet="User_LoginInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_PersonalInfo">
+            <EntityTypeMapping TypeName="SongsMgmtModel.User_PersonalInfo">
+              <MappingFragment StoreEntitySet="User_PersonalInfo">
+                <ScalarProperty Name="User_LoginInfo_Id" ColumnName="User_LoginInfo_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PRO" ColumnName="PRO" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Type">
+            <EntityTypeMapping TypeName="SongsMgmtModel.User_Type">
+              <MappingFragment StoreEntitySet="User_Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
